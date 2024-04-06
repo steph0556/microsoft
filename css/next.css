@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-image: url("../images//image2.jpg");
+    background-size: cover;
+}
+
+.slideshow-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    animation: fade 5s infinite;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.login-container {
+    margin-left: 320px;
+    top: 270px;
+    left: 1120px;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    position: absolute;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+}
+
+.upper-logo {
+    width: 100px;
+    margin: 10px auto;
+    display: block;
+}
+
+.lower-logo {
+    width: 100px;
+    margin: 10px auto;
+    margin-top: 5px;
+    display: block;
+}
+
+form {
+    margin-top: 20px;
+}
+
+#countdownContainer {
+    text-align: left;
+    margin-top: 10px;
+}
+
+#countdown {
+    font-size: 24px;
+    margin-left: 35px;
+}
+
+input#appCodeInput {
+    width: 270px;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+input#appCodeInput:focus {
+    border-bottom: 3px solid blue;
+}
+
+select {
+    width: 290px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+button {
+    width: 390px;
+    padding: 16px;
+    background-color: #005A9C;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 35px;
+}
+
+button:hover {
+    background-color: #034694;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .login-container {
+        margin-left: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+}

@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+    display: none;
+}
+
+/* Adjusted style for login-container */
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 320px; /* Added margin to shift right by 20px */
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    width: 400px;
+    height: 650px;
+}
+
+.header {
+    text-align: left;
+    margin-bottom: -40px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.logo {
+    width: 100px; /* Adjust the width of your logo */
+    margin-top: -15px;
+    margin-bottom: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 12px; /* Increased margin */
+    position: relative;
+}
+
+input {
+    padding: 12px; /* Increased padding */
+    margin-bottom: 20px; /* Increased margin */
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black; /* Initial underline color */
+    transition: border-color 0.3s; /* Smooth transition for the underline color */
+}
+
+input:focus {
+    border-bottom: 1px solid #034694; /* Underline color when active */
+}
+
+button {
+    padding: 16px; /* Increased padding and height */
+    background-color: #005A9C;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Border radius of 20px */
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 25px 0;
+}
+
+button:hover {
+    background-color: #034694;
+}
+
+.additional-buttons {
+    margin-top: 20px; /* Added margin */
+    display: flex;
+    flex-direction: column; /* Arrange buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    font-weight: 700;
+}
+
+.rounded-button {
+    width: 100%; /* Same width as the login button */
+    border-radius: 20px; /* Added border radius */
+    margin-top: 15px; /* Adjusted margin for more space */
+    padding: 25px 0; /* Adjusted padding for increased height to 50px */
+}
+
+.additional-buttons .rounded-button {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 15px;
+    padding: 25px 0;
+    color: white; /* Set text color to white */
+    /* border: 2px solid #888; */
+}
+
+.additional-buttons .rounded-button:hover {
+    background-color: #034694; /* Change background color on hover to white */
+    color: #fff; /* Change text color on hover to your preferred color */
+}
+
+.additional-buttons .rounded-button.continue-outlook,
+.additional-buttons .rounded-button.continue-other-email {
+    background-color: white;
+    color: #034694; /* Change text color to your preferred color */
+    border: 1px solid #E5E4E2; /* Set border color to your preferred color */
+}
+
+.additional-buttons .rounded-button.continue-outlook:hover,
+.additional-buttons .rounded-button.continue-other-email:hover {
+    background-color: white; /* Change background color on hover to your preferred color */
+    color: #034694; /* Change text color on hover to white */
+    border: 1px solid #C0C0C0; /* Set border color to your preferred color */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .login-container {
+        width: 80%; /* Adjust the width for smaller screens */
+        margin-left: 0; /* Remove the left margin */
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Media query for tablets (portrait and landscape) */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .login-container {
+        width: 60%; /* Adjust the width for tablets */
+        margin-left: 0; /* Remove the left margin */
+        padding: 30px; /* Adjust padding for tablets */
+    }
+}
+
+/* Media query for mobile phones (portrait and landscape) */
+@media screen and (max-width: 600px) {
+    .login-container {
+        width: 90%; /* Adjust the width for mobile phones */
+        margin-left: 0; /* Remove the left margin */
+        padding: 15px; /* Adjust padding for mobile phones */
+    }
+}
+
